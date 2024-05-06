@@ -1,6 +1,6 @@
     config.global.onActionEvent = function(actionEvent) {
-        if(actionEvent.user.identities && actionEvent.user.identities.sfmcContactKey){
-            const dcEventEndpoint = "https://g5qwky3fgmyg8mb-m04wmmrymq.c360a.salesforce.com/web/events/54369243-28d6-4b8e-9cd1-2e78f4d2c3c1";
+        if(actionEvent.user.identities && actionEvent.user.identities.MCP_IDENTITY_ATTRIBUTE_NAME){
+            const dcEventEndpoint = "TENANT_SPECIFIC_ENDPOINT/web/events/APP_SOURCE_ID";
             
             const now = new Date();
             const deviceId = SalesforceInteractions.getAnonymousId();
@@ -13,9 +13,9 @@
                 
                 "eventType": "partyIdentification",
                 "deviceId": deviceId,
-                "userId": actionEvent.user.identities.sfmcContactKey,
-                "IDName": "MC Subscriber Key",
-                "IDType": "Person Identifier",
+                "userId": actionEvent.user.identities.MCP_IDENTITY_ATTRIBUTE_NAME,
+                "IDName": "PARTY_ID_NAME",
+                "IDType": "PARTY_ID_TYPE",
             };
             
             const dcData = {"events": [dcEvent]}
